@@ -17,7 +17,14 @@ const COC_API_KEY = process.env.COC_API_KEY;
 if (!COC_API_KEY) {
     throw new Error("COC_API_KEY is not defined in the environment variables.");
 }
-
+app.get("/get-ip", async (req, res) => {
+    try {
+        const ipResponse = await axios.get("https://api64.ipify.org?format=json");
+        res.json({ ip: ipResponse.data.ip });
+    } catch (error) {
+        res.status(500).json({ error: "Failed to fetch IP" });
+    }
+})
 app.get("/clan/:clanTag", async (req, res) => {
     const { clanTag } = req.params;
     if (!clanTag) {
