@@ -51,6 +51,11 @@ app.get("/clan/:clanTag", async (req, res) => {
             tag: clanData.tag,
             description: clanData.description,
             clanLevel: clanData.clanLevel,
+            location : clanData.location.name,
+            badgeUrl : clanData.badgeUrls.large,
+            warWins : clanData.warWins,
+            trophies : clanData.trophies,
+            clanCaptial : clanData.clanCapital.capitalHallLevel,
             warWinStreak: clanData.warWinStreak,
             warLeague: clanData.warLeague?.name || "Unranked",
             townHallCounts
